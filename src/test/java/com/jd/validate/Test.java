@@ -9,6 +9,7 @@ import javax.management.openmbean.CompositeData;
 import java.lang.management.*;
 import java.lang.reflect.Field;
 import java.security.ProtectionDomain;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -108,7 +109,7 @@ public class Test {
 
     public static void getOperatingSystemInfo() {
         System.out.println("==========================OperatingSystem=========================");
-        OperatingSystemMXBean osMBean = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
+        OperatingSystemMXBean osMBean = ManagementFactory.getOperatingSystemMXBean();
         //获取操作系统相关信息
         System.out.println("getName() " + osMBean.getName());
         System.out.println("getVersion() " + osMBean.getVersion());
@@ -119,7 +120,7 @@ public class Test {
     public static void getThreadInfo() {
         System.out.println("==========================Thread=========================");
         //获取各个线程的各种状态，CPU 占用情况，以及整个系统中的线程状况
-        ThreadMXBean threadMBean = (ThreadMXBean) ManagementFactory.getThreadMXBean();
+        ThreadMXBean threadMBean = ManagementFactory.getThreadMXBean();
         System.out.println("getThreadCount() " + threadMBean.getThreadCount());
         System.out.println("getPeakThreadCount() " + threadMBean.getPeakThreadCount());
         System.out.println("getCurrentThreadCpuTime() " + threadMBean.getCurrentThreadCpuTime());
@@ -129,7 +130,7 @@ public class Test {
 
     public static void getCompilationInfo() {
         System.out.println("==========================Compilation=========================");
-        CompilationMXBean compilMBean = (CompilationMXBean) ManagementFactory.getCompilationMXBean();
+        CompilationMXBean compilMBean = ManagementFactory.getCompilationMXBean();
         System.out.println("getName() " + compilMBean.getName());
         System.out.println("getTotalCompilationTime() " + compilMBean.getTotalCompilationTime());
     }
@@ -151,7 +152,7 @@ public class Test {
         List<GarbageCollectorMXBean> gcMBeanList = ManagementFactory.getGarbageCollectorMXBeans();
         for (GarbageCollectorMXBean gcMBean : gcMBeanList) {
             System.out.println("getName() " + gcMBean.getName());
-            System.out.println("getMemoryPoolNames() " + gcMBean.getMemoryPoolNames());
+            System.out.println("getMemoryPoolNames() " + Arrays.toString(gcMBean.getMemoryPoolNames()));
         }
     }
 
