@@ -58,6 +58,7 @@ public class ObjectParameter implements ObjectBean {
     /**
      * 获取注解标注的实体属性值
      */
+    @Override
     public Object getAnnotationKeyValue() {
         return annotationKeyValue;
     }
@@ -72,6 +73,7 @@ public class ObjectParameter implements ObjectBean {
     /**
      * 通过反射获取对象的属性值
      */
+    @Override
     public Object getObjectKey(String key) {
         if (key == null || key.length() == 0) {
             return null;
@@ -96,6 +98,7 @@ public class ObjectParameter implements ObjectBean {
     /**
      * 根据不同的KEY获取注解自身的属性定义
      */
+    @Override
     public Object getAnnotationKey(String key) {
         return annotationObject.get(key);
     }
@@ -113,6 +116,7 @@ public class ObjectParameter implements ObjectBean {
     /**
      * 获取默认的注解属性VLAUE的值
      */
+    @Override
     public Object getAnnotationValue() {
         return annotationObject.get("value");
     }

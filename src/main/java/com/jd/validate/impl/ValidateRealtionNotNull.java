@@ -4,7 +4,7 @@ import com.jd.validate.common.ObjectUtils;
 import com.jd.validate.common.ValidateConstant;
 import com.jd.validate.engine.EntityUtils;
 import com.jd.validate.engine.ValidateResult;
-import com.jd.validate.inter.ConstraintValidator;
+import com.jd.validate.inter.AbstractConstraintValidator;
 import com.jd.validate.inter.ObjectBean;
 
 /**
@@ -14,8 +14,9 @@ import com.jd.validate.inter.ObjectBean;
  *
  * @RealtionNull(specificValue={"1","2"},associationField={"name","age","sex"}) String id
  */
-public class ValidateRealtionNotNull implements ConstraintValidator {
+public class ValidateRealtionNotNull extends AbstractConstraintValidator {
 
+    @Override
     public ValidateResult exec(ObjectBean bean) {
         boolean isNullValid = ObjectUtils.parseBoolean(bean.getAnnotationKey(ValidateConstant.ISNULLVALID));
         if (isNullValid) {

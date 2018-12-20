@@ -4,11 +4,12 @@ import com.jd.validate.common.ObjectUtils;
 import com.jd.validate.common.ValidateConstant;
 import com.jd.validate.engine.EntityUtils;
 import com.jd.validate.engine.ValidateResult;
-import com.jd.validate.inter.ConstraintValidator;
+import com.jd.validate.inter.AbstractConstraintValidator;
 import com.jd.validate.inter.ObjectBean;
 
-public class ValidateEnumKey implements ConstraintValidator {
+public class ValidateEnumKey extends AbstractConstraintValidator {
 
+    @Override
     public ValidateResult exec(ObjectBean bean) {
         boolean isNullValid = ObjectUtils.parseBoolean(bean.getAnnotationKey(ValidateConstant.ISNULLVALID));
         if (isNullValid) {

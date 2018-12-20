@@ -4,7 +4,7 @@ import com.jd.validate.common.ObjectUtils;
 import com.jd.validate.common.ValidateConstant;
 import com.jd.validate.engine.EntityUtils;
 import com.jd.validate.engine.ValidateResult;
-import com.jd.validate.inter.ConstraintValidator;
+import com.jd.validate.inter.AbstractConstraintValidator;
 import com.jd.validate.inter.ObjectBean;
 
 import java.util.List;
@@ -14,8 +14,9 @@ import java.util.regex.Pattern;
 /**
  * 属性最大最小值校验
  */
-public class ValidateSize implements ConstraintValidator {
+public class ValidateSize extends AbstractConstraintValidator {
 
+    @Override
     public ValidateResult exec(ObjectBean bean) {
         boolean isNullValid = ObjectUtils.parseBoolean(bean.getAnnotationKey(ValidateConstant.ISNULLVALID));
         if (isNullValid) {

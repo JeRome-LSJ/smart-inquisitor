@@ -1,6 +1,6 @@
 package com.jd.validate.common;
 
-import com.jd.validate.inter.ConstraintValidator;
+import com.jd.validate.inter.AbstractConstraintValidator;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -20,5 +20,5 @@ import java.lang.annotation.Target;
 @Target({ANNOTATION_TYPE})
 @Retention(RUNTIME)
 public @interface Constraint {
-    Class<? extends ConstraintValidator> value();
+    Class<? extends AbstractConstraintValidator> value();
 }

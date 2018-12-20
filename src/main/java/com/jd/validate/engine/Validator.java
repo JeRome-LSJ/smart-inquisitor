@@ -8,7 +8,7 @@ import java.util.List;
 import com.jd.validate.annotations.Iteration;
 import com.jd.validate.common.Constraint;
 import com.jd.validate.common.ObjectUtils;
-import com.jd.validate.inter.ConstraintValidator;
+import com.jd.validate.inter.AbstractConstraintValidator;
 
 public class Validator {
 
@@ -86,9 +86,9 @@ public class Validator {
                 //根据注解了获取注解实现类名称
                 Constraint constraintAnnotation = annotationType.getAnnotation(Constraint.class);
                 if (constraintAnnotation != null) {
-                    Class<? extends ConstraintValidator> value = constraintAnnotation.value();
+                    Class<? extends AbstractConstraintValidator> value = constraintAnnotation.value();
                     //反射注解实现类
-                    ConstraintValidator newInstance = value.newInstance();
+                    AbstractConstraintValidator newInstance = value.newInstance();
                     //调用各自的实现类自行匹配校验规则，返回估计参数即可
                     ValidateResult execResult = newInstance.exec(objectParam);
                     if (execResult != null && execResult.getValidateCheckResult()) {
